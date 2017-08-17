@@ -4,7 +4,8 @@
   "description": "Using GrapQL server it search data more fast and efficiently",
   "main": "server.js",
   "scripts": {
-    "dev:server": "nodemon server.js"
+    "dev:server": "nodemon server.js",
+    "json:server":"json-server --watch data.json"
   },
   "repository": {
     "type": "git",
@@ -17,9 +18,11 @@
   },
   "homepage": "https://github.com/roushanj/search-dollop#readme",
   "dependencies": {
+    "axios": "^0.16.2",
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "express-graphql": "^0.6.7",
-    "graphql": "^0.10.5"
+    "graphql": "^0.10.5",
+    "json-server": "^0.12.0"
   }
 }
