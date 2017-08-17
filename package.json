@@ -1,0 +1,25 @@
+{
+  "name": "search-dollop",
+  "version": "1.0.0",
+  "description": "Using GrapQL server it search data more fast and efficiently",
+  "main": "server.js",
+  "scripts": {
+    "dev:server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roushanj/search-dollop.git"
+  },
+  "author": "oliver",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/roushanj/search-dollop/issues"
+  },
+  "homepage": "https://github.com/roushanj/search-dollop#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "express-graphql": "^0.6.7",
+    "graphql": "^0.10.5"
+  }
+}
