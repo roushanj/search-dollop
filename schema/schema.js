@@ -20,6 +20,15 @@ const CustomerType = new GraphQLObjectType({
 	})
 })
 
+const ProductType = new GraphQLObjectType({
+	name:'product',
+	fields:() => ({
+		id: {type: GraphQLString},
+		name: {type: GraphQLString},
+		expire_date: {type: GraphQLString},
+		brand: {type: GraphQLString}
+	})
+})
 
 //Root Query
 
@@ -28,6 +37,20 @@ const RootQuery = new GraphQLObjectType({
 	name:'RootQueryType',
 
     fields:{
+
+        product:{
+        	type:ProductType,
+        	args:{
+        		id:{type: GraphQLString}
+        	},
+        	resolve(parentValue, args){
+
+        		return axios.get('http://localhost:3000/product' + args.id)
+        		   .then(res => res.data);
+        	}
+
+        },
+
     	customer:{
 			type:CustomerType,
 			args:{
@@ -41,7 +64,15 @@ const RootQuery = new GraphQLObjectType({
 				
 			}
 	    },
-	    
+
+	    products:{
+	    	type: new GraphQLList(CustomerType),
+	    	resolve(parentValue, args){
+	    		return axios.get('http://localhost:3000/product/')
+	    		   .then(res => res.data);
+	    	}
+	    },
+
 	    customers:{
 	    	type: new GraphQLList(CustomerType),
 	    	resolve(parentValue, args){
@@ -49,6 +80,8 @@ const RootQuery = new GraphQLObjectType({
 	    		   .then(res => res.data);
 	    	}
 	    }
+
+
     }
 	 
 });
